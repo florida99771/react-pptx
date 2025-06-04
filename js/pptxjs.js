@@ -621,7 +621,7 @@
                             for (var i = 0; i < relationshipArray.length; i++) {
                                 themeResObj[relationshipArray[i]["attrs"]["Id"]] = {
                                     "type": relationshipArray[i]["attrs"]["Type"].replace("http://schemas.openxmlformats.org/officeDocument/2006/relationships/", ""),
-                                    "target": relationshipArray[i]["attrs"]["Target"].replace("../", "ppt/")
+                                    "target": relationshipArray[i]["attrs"]["Target"].replace(/\.\.\//g, "ppt/")
                                 };
                             }
                         } else {
