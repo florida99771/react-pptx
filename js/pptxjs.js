@@ -628,7 +628,7 @@
                             //console.log("theme relationshipArray : ", relationshipArray)
                             themeResObj[relationshipArray["attrs"]["Id"]] = {
                                 "type": relationshipArray["attrs"]["Type"].replace("http://schemas.openxmlformats.org/officeDocument/2006/relationships/", ""),
-                                "target": relationshipArray["attrs"]["Target"].replace("../", "ppt/")
+                                "target": relationshipArray["attrs"]["Target"].replace(/\.\.\//g, "ppt/")
                             };
                         }
                     }
