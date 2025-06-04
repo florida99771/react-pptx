@@ -23,17 +23,22 @@ export async function pptxToHtml(options: PptxToHtmlOptions): Promise<void> {
   }
 
   const zip = await JSZip.loadAsync(data);
-  const slideFiles = Object.keys(zip.files).filter((p) =>
-    p.match(/^ppt\/slides\/slide\d+\.xml$/)
-  );
+  const slideFiles = Object.keys(zip.files)
+    .filter((p) => /^ppt\/slides\/slide\d+\.xml$/.test(p))
+    .sort((a, b) => {
+      const getIdx = (p: string) =>
+        parseInt(p.match(/slide(\d+)\.xml$/)?.[1] ?? '0', 10);
+      return getIdx(a) - getIdx(b);
+    });
+
   const parser = new DOMParser();
-  for (const slidePath of slideFiles.sort()) {
+  for (const slidePath of slideFiles) {
     const xml = await zip.files[slidePath].async('string');
     const doc = parser.parseFromString(xml, 'text/xml');
     const texts = Array.from(doc.getElementsByTagName('a:t'));
     const div = document.createElement('div');
     div.className = 'ppt-slide';
-    div.innerHTML = texts.map((t) => t.textContent).join(' ');
+    div.textContent = texts.map((t) => t.textContent ?? '').join(' ');
     target.appendChild(div);
   }
 }
