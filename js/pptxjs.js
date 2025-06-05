@@ -592,7 +592,7 @@
                 for (var i = 0; i < RelationshipArray.length; i++) {
                     switch (RelationshipArray[i]["attrs"]["Type"]) {
                         case "http://schemas.openxmlformats.org/officeDocument/2006/relationships/theme":
-                            themeFilename = RelationshipArray[i]["attrs"]["Target"].replace("../", "ppt/");
+                            themeFilename = RelationshipArray[i]["attrs"]["Target"].replace(/\.\.\//g, "ppt/");
                             break;
                         default:
                             masterResObj[RelationshipArray[i]["attrs"]["Id"]] = {
