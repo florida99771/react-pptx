@@ -602,7 +602,7 @@
                     }
                 }
             } else {
-                themeFilename = RelationshipArray["attrs"]["Target"].replace("../", "ppt/");
+                themeFilename = RelationshipArray["attrs"]["Target"].replace(/\.\.\//g, "ppt/");
             }
             //console.log(themeFilename)
             //Load Theme file
