@@ -597,7 +597,7 @@
                         default:
                             masterResObj[RelationshipArray[i]["attrs"]["Id"]] = {
                                 "type": RelationshipArray[i]["attrs"]["Type"].replace("http://schemas.openxmlformats.org/officeDocument/2006/relationships/", ""),
-                                "target": RelationshipArray[i]["attrs"]["Target"].replace("../", "ppt/")
+                                "target": RelationshipArray[i]["attrs"]["Target"].replace(/\.\.\//g, "ppt/")
                             };
                     }
                 }
