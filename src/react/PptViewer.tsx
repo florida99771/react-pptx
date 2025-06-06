@@ -1,4 +1,5 @@
-import React, { useEffect, useRef } from 'react';
+// Use namespace import so we don't rely on a default export from React
+import * as React from 'react';
 import type { PptxToHtmlOptions } from '../parser/pptxParser';
 import { pptxToHtml } from '../parser/pptxParser';
 import { clearElement } from '../utils/domUtils';
@@ -12,8 +13,8 @@ export interface PptViewerProps {
 
 export function PptViewer({ fileUrl }: PptViewerProps) {
   // Avoid generic parameters to keep compatibility when React types are missing
-  const containerRef = useRef(null);
-  useEffect(() => {
+  const containerRef = React.useRef<HTMLDivElement | null>(null);
+  React.useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
     clearElement(container);
