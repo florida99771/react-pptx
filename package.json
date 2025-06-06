@@ -3,6 +3,7 @@
   "version": "2.0.0",
   "description": "Modernized PPTX to HTML converter",
   "main": "dist/pptxjs-modern.min.js",
+  "type": "module",
   "module": "dist/pptxjs-modern.mjs",
   "types": "types/index.d.ts",
   "files": ["dist", "types"],
@@ -24,7 +25,8 @@
     "tslib": "^2.6.2",
     "vitest": "^0.34.0",
     "typescript": "^5.0.0",
-    "jsdom": "^22.1.0"
+    "jsdom": "^22.1.0",
+    "@types/react": "^18.0.0"
   },
   "license": "MIT"
 }
