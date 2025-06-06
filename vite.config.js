@@ -6,7 +6,9 @@ export default defineConfig({
     lib: {
       entry: 'src/index.ts',
       name: 'pptxjs-modern',
-      fileName: (format) => `pptxjs-modern.${format}.mjs`,
+      // Output filename needs to match "module" entry in package.json
+      // and example paths.
+      fileName: () => 'pptxjs-modern.mjs',
       formats: ['es'],
     },
     rollupOptions: {
