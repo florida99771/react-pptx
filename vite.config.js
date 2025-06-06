@@ -10,7 +10,7 @@ export default defineConfig({
       formats: ['es'],
     },
     rollupOptions: {
-      external: ['jszip', 'd3', 'nv.d3', 'react'],
+      external: ['jszip', 'd3', 'nvd3', 'react'],
     },
   },
   plugins: [react()],
