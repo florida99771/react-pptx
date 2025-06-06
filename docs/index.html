@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>PPTXjs Modern Demo</title>
+  <style>
+    body { font-family: sans-serif; margin: 20px; }
+    #slides .ppt-slide { margin-bottom: 1em; padding: 10px; border: 1px solid #ccc; }
+  </style>
+  <script type="module">
+    import { pptxToHtml } from 'https://unpkg.com/pptxjs-modern?module';
+    window.addEventListener('DOMContentLoaded', () => {
+      const fileInput = document.getElementById('file-input');
+      const slides = document.getElementById('slides');
+      fileInput.addEventListener('change', async () => {
+        const file = fileInput.files[0];
+        if (!file) return;
+        slides.innerHTML = '';
+        await pptxToHtml({ file, target: slides }).catch((err) => {
+          slides.textContent = 'Error loading presentation: ' + err;
+          console.error(err);
+        });
+      });
+    });
+  </script>
+</head>
+<body>
+  <h1>PPTXjs Modern Demo</h1>
+  <p>Select a PPTX file to display its slide text.</p>
+  <input type="file" id="file-input" accept=".pptx" />
+  <div id="slides"></div>
+</body>
+</html>
