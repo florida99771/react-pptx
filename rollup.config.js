@@ -9,6 +9,6 @@ export default defineConfig({
     name: 'pptxjs',
     sourcemap: true,
   },
-  external: ['jszip', 'd3', 'nv.d3', 'react'],
+  external: ['jszip', 'd3', 'nvd3', 'react'],
   plugins: [typescript({ tsconfig: './tsconfig.json' })],
 });
