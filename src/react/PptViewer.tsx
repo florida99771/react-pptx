@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import type { PptxToHtmlOptions } from '../parser/pptxParser';
 import { pptxToHtml } from '../parser/pptxParser';
 import { clearElement } from '../utils/domUtils';
