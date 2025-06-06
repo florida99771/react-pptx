@@ -11,7 +11,8 @@ export interface PptViewerProps {
 }
 
 export function PptViewer({ fileUrl }: PptViewerProps) {
-  const containerRef = useRef<HTMLDivElement>(null);
+  // Avoid generic parameters to keep compatibility when React types are missing
+  const containerRef = useRef(null);
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
